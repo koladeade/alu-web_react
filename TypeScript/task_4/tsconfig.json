@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "outFile": "./dist/bundle.js",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "none",
+    "target": "es5"
+  }
+}
