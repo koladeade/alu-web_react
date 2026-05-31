@@ -1,5 +1,4 @@
 const path = require('path');
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -16,24 +15,16 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-    ],
-  },
-  optimization: {
-    minimizer: [
-      '...',
-      new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.sharpMinify,
-          options: {
-            encodeOptions: {
-              jpeg: { quality: 80 },
-              png: { quality: 80 },
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
             },
           },
-        },
-      }),
+        ],
+      },
     ],
   },
   performance: {
